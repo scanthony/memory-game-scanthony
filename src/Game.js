@@ -18,12 +18,12 @@ class Game extends Component {
             wonGame: false,
             alertRed: false,
             running: false, // This value is used to avoid two 'cardPress()' functions running at the same time
-            secCount: 0
+            secCount: 0,
+            isCounting: false
         };
-
         setInterval(() => {
-            if (!this.state.wonGame) this.setState({secCount: this.state.secCount + 1});
-        }, 1000)
+            if (!this.state.wonGame && this.state.isCounting) this.setState({secCount: this.state.secCount + 1});
+        }, 1000);
     }
 
     cardPress(evt) {
@@ -31,6 +31,10 @@ class Game extends Component {
 		
         if (this.state.running) return false;
         this.setState({running: true});
+
+        if (!this.state.isCounting) {
+            this.setState({isCounting: true});
+        }
 		
         let cardType = evt.target.getAttribute('cardType');
         let keyNumPress = evt.target.getAttribute('keyNum');
@@ -92,7 +96,8 @@ class Game extends Component {
             wonGame: false,
             alertRed: false,
             running: false,
-            secCount: 0
+            secCount: 0,
+            isCounting: false
         });
     }
 
@@ -118,7 +123,13 @@ class Game extends Component {
         if (this.state.wonGame) {
 			//This component return 2 versions of User Interface
 			//This one is the interface when the player have won the game.
-            return (<div className="container"><WinProp reStartGame={this.reStartGame} movesTotal={this.state.movesTotal} /></div>);
+            return (<div className="container">
+                <WinProp
+                    reStartGame={this.reStartGame}
+                    movesTotal={this.state.movesTotal}
+                    secCount={this.state.secCount}
+                />
+            </div>);
         } else {
 			//This one is when he/she is playing the game.
             return (<div className="container">

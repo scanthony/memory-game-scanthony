@@ -5,9 +5,9 @@ This project is built with React.js and Udacity's starter code. Please follow th
 
 ## Instructions
 
-First, Install Node.js and NPM on your desktop. 
+First, Install Node.js and NPM on your desktop. For Windows Users, you can follow the [instructions](http://nodesource.com/blog/installing-nodejs-tutorial-windows/) here. For Mac Users, use this [tutorial](http://blog.teamtreehouse.com/install-node-js-npm-mac). For Linux users, install [this way](https://www.ostechnix.com/install-node-js-linux/).
 
-Go to the project folder, execute `npm install`. 
+Go to the project folder, execute `npm install` in the command prompt.
 
 After the installation, execute `npm start`. 
 

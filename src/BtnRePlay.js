@@ -5,7 +5,7 @@ class BtnRePlay extends Component {
     render() {
         return (
             <div className="restart">
-                <i className="fa fa-repeat" onClick={this.props.reStartGame}></i>
+                <i className="fa fa-repeat" onClick={this.props.reStartGame}> REPLAY</i>
             </div>
         );
     }
