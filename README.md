@@ -1,7 +1,9 @@
 # Memory Game Project
 ## A Udacity Front-End Development Nanodegree Project 
 
-This project is built with React.js and Udacity's starter code. Please follow the instructions below: 
+This project is built with React.js and Udacity's starter code. You can [preview the game here](https://scanthony.github.io/memory-game-scanthony/).
+
+Please follow the instructions below: 
 
 ## Instructions
 
