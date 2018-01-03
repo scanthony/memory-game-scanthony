@@ -22,7 +22,7 @@ class Game extends Component {
         };
 
         setInterval(() => {
-            this.setState({secCount: this.state.secCount + 1});
+            if (!this.state.wonGame) this.setState({secCount: this.state.secCount + 1});
         }, 1000)
     }
 
