@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CardInst from './CardInst';
 
+//The whole array of game cards
 class CardStacks extends Component {
     render() {
         let cards = this.props.cards;

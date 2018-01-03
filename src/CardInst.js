@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+// This component is a single card in the game
 class CardInst extends Component {
     render() {
         //console.log(this.props.keyNum);

@@ -10,25 +10,34 @@ class Game extends Component {
         let randCardsRes = this.randCards();
         this.state = {
             cards: randCardsRes,
-            clickED1: -1,
+            clickED1: -1, // -1 means no card is being clicked. Otherwise the value will be the 'keyNum' of the clicked card.
             clickED2: -1,
             lastCardType: '',
-            matchED: [],
-            movesTotal: 0,
+            matchED: [], // An arrary of clicked cards' keyNum value 
+            movesTotal: 0, //Used to generate star grading
             wonGame: false,
             alertRed: false,
-            running: false
+            running: false, // This value is used to avoid two 'cardPress()' functions running at the same time
+            secCount: 0
         };
+
+        setInterval(() => {
+            this.setState({secCount: this.state.secCount + 1});
+        }, 1000)
     }
 
     cardPress(evt) {
+		// this function control the logics of the game 
+		
         if (this.state.running) return false;
         this.setState({running: true});
+		
         let cardType = evt.target.getAttribute('cardType');
         let keyNumPress = evt.target.getAttribute('keyNum');
-        if (this.state.clickED1 === -1) {
+		
+        if (this.state.clickED1 === -1) { // when the first card is being clicked
             this.setState({clickED1: parseInt(keyNumPress), lastCardType: cardType});
-        } else if (this.state.clickED2 === -1 && this.state.clickED1 !== keyNumPress) {
+        } else if (this.state.clickED2 === -1 && this.state.clickED1 !== keyNumPress) { // when the 2nd card is being clicked
             this.setState({clickED2: parseInt(keyNumPress)});
             if (cardType == this.state.lastCardType) {
                 let matchEDNew = this.state.matchED;
@@ -82,11 +91,12 @@ class Game extends Component {
             movesTotal: 0,
             wonGame: false,
             alertRed: false,
-            running: false
+            running: false,
+            secCount: 0
         });
     }
 
-    randCards() {
+    randCards() { // Used for generating random array of cards
         let fullCards = [
                 "fa-diamond", "fa-diamond",
                 "fa-paper-plane-o", "fa-paper-plane-o",
@@ -101,13 +111,16 @@ class Game extends Component {
         fullCards.sort((a, b) => (0.5 - Math.random()));
         fullCards.sort((a, b) => (0.5 - Math.random()));
 
-        return fullCards
+        return fullCards;
     }
 
     render() {
         if (this.state.wonGame) {
+			//This component return 2 versions of User Interface
+			//This one is the interface when the player have won the game.
             return (<div className="container"><WinProp reStartGame={this.reStartGame} movesTotal={this.state.movesTotal} /></div>);
         } else {
+			//This one is when he/she is playing the game.
             return (<div className="container">
                 <GamePlay gameInfo={this.state}
                           reStartGame={this.reStartGame}

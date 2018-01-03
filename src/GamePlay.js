@@ -3,11 +3,14 @@ import ShowInfo from './ShowInfo';
 import CardStacks from './CardStacks';
 
 class GamePlay extends Component {
+	//Game plalying interface
+	//Two parts: Infomation bar and the card playing board.
     render() {
         return (<div>
             <ShowInfo
                 movesTotal={this.props.gameInfo.movesTotal}
                 reStartGame={this.props.reStartGame}
+                secCount={this.props.gameInfo.secCount}
             />
             <CardStacks
                 cards={this.props.gameInfo.cards}

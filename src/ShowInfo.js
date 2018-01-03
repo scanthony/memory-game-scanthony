@@ -10,9 +10,11 @@ class ShowInfo extends Component {
         if (this.props.movesTotal > 20) stars = 0;
 
         return (<section className="score-panel">
-                <span>Grade <span className="moves">{stars}</span></span>;
-                <BtnRePlay reStartGame={this.props.reStartGame} />
-            </section>)
+                    <span>Grade <span className="moves">{stars}</span></span>;
+                    <BtnRePlay reStartGame={this.props.reStartGame} />
+                    <br />
+                    <span>{this.props.secCount} secondes passed! Hurry up!</span>
+            </section>);
     }
 }
 
