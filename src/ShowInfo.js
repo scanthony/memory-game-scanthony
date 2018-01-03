@@ -13,7 +13,9 @@ class ShowInfo extends Component {
                     <span>Grade <span className="moves">{stars}</span></span>;
                     <BtnRePlay reStartGame={this.props.reStartGame} />
                     <br />
-                    <span>{this.props.secCount} secondes passed! Hurry up!</span>
+                    <span>{this.props.secCount} secondes passed! Hurry up! </span>
+                    <br />
+                    <span>You have already used {this.props.movesTotal} moves in total! </span>
             </section>);
     }
 }
